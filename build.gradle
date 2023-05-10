@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'dataStuctures'
+version '1.0-SNAPSHOT'
+def assertj = '3.23.1'
+def restAssured = '5.3.0'
+def junit = '5.9.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.junit.jupiter:junit-jupiter:${junit}"
+    implementation "io.rest-assured:rest-assured:${restAssured}"
+    implementation "io.rest-assured:json-path:${restAssured}"
+    implementation "io.rest-assured:json-schema-validator:${restAssured}"
+    implementation "org.assertj:assertj-core:${assertj}"
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
