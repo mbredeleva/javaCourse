@@ -1,6 +1,12 @@
+package dataStructures;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
+import lombok.Data;
 
-class Passenger {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Data
+public class Passenger {
     String name;
     int trips;
     int airline;
@@ -9,9 +15,5 @@ class Passenger {
         this.name = name;
         this.trips = trips;
         this.airline = airline;
-    }
-
-    public Passenger(String name, int airline) {
-        Passenger(name, airline, 0)
     }
 }
