@@ -5,8 +5,6 @@ import utils.exeptions.*;
 import io.restassured.response.Response;
 import io.restassured.specification.*;
 
-import static utils.StringConstants.MY_ENDPOINT;
-
 
 public class RestMethods {
 
