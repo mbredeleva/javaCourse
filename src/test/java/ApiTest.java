@@ -31,7 +31,7 @@ public class ApiTest {
         PassengerListResponse passengers = api.getAllPassengers();
         userToUpdateID = passengers.get(0).get_id();
         firstUserToDeleteID = passengers.get(1).get_id();
-        secondUserToDeleteID = passengers.get(1).get_id();
+        secondUserToDeleteID = passengers.get(2).get_id();
 
 
         // Indeed, it would be better to create a function that returns an existing user's id in any moment
