@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'io.freefair.lombok' version '8.0.1'
+    id'io.qameta.allure' version '2.11.2'
 }
 
 group 'dataStuctures'
@@ -13,11 +15,14 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.26'
     implementation "org.junit.jupiter:junit-jupiter:${junit}"
     implementation "io.rest-assured:rest-assured:${restAssured}"
     implementation "io.rest-assured:json-path:${restAssured}"
     implementation "io.rest-assured:json-schema-validator:${restAssured}"
     implementation "org.assertj:assertj-core:${assertj}"
+    implementation('org.aeonbits.owner:owner:1.0.12')
+    implementation 'io.qameta.allure:allure-rest-assured:2.20.1'
 }
 
 test {

@@ -1,21 +1,24 @@
 package dataStructures;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Data
 @Builder
 @NoArgsConstructor(staticName = "of")
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MyResponseItemList {
-    private List<Object> data;
+public class PassengerListResponse {
+    private ArrayList<PassengerItemResponse> data;
     private int totalPages;
     private int totalPassengers;
+
+    public PassengerItemResponse get(int i){
+        return getData().get(i);
+    }
 }

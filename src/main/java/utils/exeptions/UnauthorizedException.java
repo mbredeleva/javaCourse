@@ -1,2 +1,8 @@
-package utils.exeptions;public class UnauthorizedExeption {
+package utils.exeptions;
+import org.apache.http.HttpException;
+
+public class UnauthorizedException extends HttpException {
+    public UnauthorizedException(String message) {
+        super(message);
+    }
 }

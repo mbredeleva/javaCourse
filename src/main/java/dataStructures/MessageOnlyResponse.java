@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor(staticName = "of")
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)public class FourXXErrorResponse {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class MessageOnlyResponse {
     private String message;
 }

@@ -1,4 +1,9 @@
-package utils;
+package utils.exeptions;
 
-public class CustomExceptions {
+import org.apache.http.HttpException;
+
+public class BadRequestException extends HttpException {
+    public BadRequestException(String message) {
+        super(message);
+    }
 }
