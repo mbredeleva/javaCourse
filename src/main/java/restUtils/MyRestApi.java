@@ -49,8 +49,6 @@ public class MyRestApi {
                 then().log().all().
                 extract().response();;
 
-                //resp.statusCode(HttpStatus.SC_OK);
-
         return resp.then().statusCode(HttpStatus.SC_OK).extract().path("access_token");
     }
 
