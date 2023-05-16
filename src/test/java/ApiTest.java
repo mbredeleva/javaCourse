@@ -20,7 +20,8 @@ public class ApiTest {
     private static String userToUpdateID;
     private static String firstUserToDeleteID;
     private static String secondUserToDeleteID;
-
+    
+    //TODO: add constructor, accepting Credendials object
     private static final MyRestApi api = new MyRestApi(Config.getUserConfig().user2.getLogin(),
             Config.getUserConfig().user2.getPassword());
 
