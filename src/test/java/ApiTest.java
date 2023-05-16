@@ -18,7 +18,8 @@ public class ApiTest {
     private final int airlineID = 6979;
 
     private static String userToUpdateID;
-    private static String userToDeleteID;
+    private static String firstUserToDeleteID;
+    private static String secondUserToDeleteID;
 
     private static final MyRestApi api = new MyRestApi(Config.getUserConfig().user2.getLogin(),
             Config.getUserConfig().user2.getPassword());
@@ -29,7 +30,9 @@ public class ApiTest {
         // Find an existing passenger's id
         PassengerListResponse passengers = api.getAllPassengers();
         userToUpdateID = passengers.get(0).get_id();
-        userToDeleteID = passengers.get(1).get_id();
+        firstUserToDeleteID = passengers.get(1).get_id();
+        secondUserToDeleteID = passengers.get(1).get_id();
+
 
         // Indeed, it would be better to create a function that returns an existing user's id in any moment
         // But I wanted to use a fixture in my tests :-)
@@ -88,6 +91,18 @@ public class ApiTest {
 
     @SneakyThrows
     @Test
+    @DisplayName("Try to get a passenger that existed but was deleted")
+    void getJustDeletedPassengerByIDTest(){
+        api.deletePassenger(secondUserToDeleteID);
+        EmptyResponse empty = api.getUnknownPassengerById(secondUserToDeleteID);
+        // I don't like this line. But the task was to check status code, so I suppose
+        // the test should have an explicit assert checking response status code
+        // Shouldn't api return 4xx status code in this case?
+        assertThat(empty.getStatusCode()).isEqualTo(HttpStatus.SC_NO_CONTENT);
+    }
+
+    @SneakyThrows
+    @Test
     @DisplayName("Update a name of an existing user")
     void updateExistingPassengerName() {
         String newName = "Summer Glau";
@@ -115,7 +130,7 @@ public class ApiTest {
     @Test
     @DisplayName("Delete an existing user")
     void deletePassengerTest() {
-        MessageOnlyResponse resp = api.deletePassenger(userToDeleteID);
+        MessageOnlyResponse resp = api.deletePassenger(firstUserToDeleteID);
         assertThat(resp.getMessage()).isEqualTo(PASSENGER_SUCCESSFULLY_DELETED_MESSAGE);
     }
 
